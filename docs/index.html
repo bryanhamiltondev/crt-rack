@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>crt-rack - live demo</title>
+<link rel="stylesheet" href="rack.css">
+<style>
+:root{--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+body{margin:0;background:#16181d;color:#e9edf1;font:16px/1.7 var(--mono,monospace)}
+main{max-width:760px;margin:0 auto;padding:80px 24px 120px}
+h1{color:#00d2ff;font-size:28px;letter-spacing:.02em}
+.kicker{color:#9aa3ae;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+section{margin:48px 0}
+code{background:#1d2027;border:1px solid #2b2f39;border-radius:4px;padding:2px 7px;font-size:14px;color:#00d2ff}
+.foot{color:#6b7a8d;font-size:13px}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">crt-rack · live demo</p>
+<h1>Your site, but it's rack gear.</h1>
+<p>Everything on this page is the rack. Bottom rail: VFD clock, live ticker, scroll position in dB, real LCP/CLS from your browser. Press <code>⌘K</code> / <code>Ctrl+K</code> for the command palette. Hit the ⏻ power button bottom-left for the full CRT shutdown-and-reboot.</p>
+<section><h2>Scroll me</h2><p>The dB readout tracks your position. Real PerformanceObserver numbers in the HUD - not fake ones.</p></section>
+<section><h2>Zero dependencies</h2><p>One CSS file, one JS file, ~10KB combined. No framework, no build step, no analytics. The ticker data comes from a 40-line PHP proxy with a 30-minute cache.</p></section>
+<section><h2>Graceful everywhere</h2><p>No PHP? The ticker falls back to a static line. Reduced motion? The CRT animation steps aside. Mobile? The HUD hides, the rail stays.</p></section>
+<p class="foot">Try the palette eggs: <code>ls</code>, <code>whoami</code>, <code>rm -rf /</code></p>
+</main>
+<script src="rack.js"></script>
+</body>
+</html>
