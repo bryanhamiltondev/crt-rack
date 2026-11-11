@@ -38,6 +38,23 @@ Two arrays at the bottom of `rack.js`:
 
 The `.chat` rule at the end of `rack.css` is a production-specific nudge for my own chat widget - delete it.
 
+## Production hardening
+
+Lessons from running the rack live on a 1,000-page site:
+
+- **Power-hold boot.** The reboot reads better with a beat of black before the
+  page re-expands: the power-on path now holds black ~3s (up from 500ms)
+  before re-initializing. Once per session via `sessionStorage` - the boot
+  animation is a moment, not a toll.
+- **EQ dock readability.** The equalizer bars glow cyan (`#22d3ee`) against
+  the dark rail, and long titles truncate with an ellipsis (34 chars title /
+  22 artist) so the bars never get pushed around by text.
+- **One-shot hints.** Any hint UI mounted by the rack shows once per session
+  (~6s, `sessionStorage`-gated) - a hint that repeats is a bug, not a feature.
+- **Respect the IIFE.** The main script is one closure; anything appended at
+  runtime must own its querySelectors and cleanup. See the
+  [self-contained appended scripts recipe](https://github.com/bryanhamiltondev/guarded-deploy-workers/blob/main/docs/recipes.md).
+
 ## Notes
 
 - Respects `prefers-reduced-motion`: the CRT animation skips for those users.
