@@ -113,6 +113,7 @@ tick.addEventListener('click',function(e){var t=e.target&&e.target.closest?e.tar
 /* ---- ticker: exact ticker.php payload, inlined (GitHub Pages can't run PHP).
      Self-hosting: replace TICKER with fetch('/ticker.php').then(r=>r.json()) ---- */
 var TICKER={"items":["The DJ Calendar top 10 DJ's worldwide","#1 DAVID GUETTA","#2 MARTIN GARRIX","#3 ALOK","#4 DIMITRI VEGAS AND LIKE MIKE","#5 ARMIN VAN BUUREN","#6 TIMMY TRUMPET","#7 FISHER","#8 AFROJACK","#9 CHARLOTTE DE WITTE","#10 ANYMA"],"djs":{"1":{"name":"David Guetta","url":"https://thedjcalendar.com/davidguetta","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/2023-11-16_Gala_de_los_Latin_Grammy%2C_22_%28David_Guetta%29.jpg/500px-2023-11-16_Gala_de_los_Latin_Grammy%2C_22_%28David_Guetta%29.jpg","date":"DEC 31"},"2":{"name":"Martin Garrix","url":"https://thedjcalendar.com/martingarrix","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Martin_Garrix_-_Superbloom_Festival_2023_-_DSC2689_%28cropped%29.jpg/500px-Martin_Garrix_-_Superbloom_Festival_2023_-_DSC2689_%28cropped%29.jpg","date":"NOV 20"},"3":{"name":"Alok","url":"https://thedjcalendar.com/alok","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Alok_-_Lady_Night.png/500px-Alok_-_Lady_Night.png","date":"NOV 13"},"4":{"name":"Dimitri Vegas and Like Mike","url":"https://thedjcalendar.com/dimitrivegasandlikemike","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/20220615_Ushuaia_Tomorrowland_Opening_0004_2048x1365px.jpg/500px-20220615_Ushuaia_Tomorrowland_Opening_0004_2048x1365px.jpg","date":"NOV 27"},"5":{"name":"Armin van Buuren","url":"https://thedjcalendar.com/arminvanbuuren","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Armin_van_Buuren%2C_November_2025_%28cropped%29.jpg/500px-Armin_van_Buuren%2C_November_2025_%28cropped%29.jpg","date":"NOV 14"},"6":{"name":"Timmy Trumpet","url":"https://thedjcalendar.com/timmytrumpet","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Timmy-Trumpet-WIkipedia.jpg/500px-Timmy-Trumpet-WIkipedia.jpg","date":"NOV 13"},"7":{"name":"FISHER","url":"https://thedjcalendar.com/fisher","img":"https://cdn-images.dzcdn.net/images/artist/0c0cec214fbe671c1c32c7efbc042189/500x500-000000-80-0-0.jpg","date":"NOV 12"},"8":{"name":"Afrojack","url":"https://thedjcalendar.com/afrojack","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Afrojack_2012.jpg/500px-Afrojack_2012.jpg","date":"NOV 20"},"9":{"name":"Charlotte de Witte","url":"https://thedjcalendar.com/charlottedewitte","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Charlotte_de_witte-1513626416.jpg/500px-Charlotte_de_witte-1513626416.jpg","date":"NOV 28"},"10":{"name":"Anyma","url":"https://thedjcalendar.com/anyma","img":"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Anyma_2025_%28cropped%29.jpg/500px-Anyma_2025_%28cropped%29.jpg","date":"NOV 21"}}};
+window.__BHTICKER=TICKER; /* read by the bh-eq player block below */
 (function renderTicker(){
  tickIn.innerHTML='';
  TICKER.items.forEach(function(it,i){
@@ -195,7 +196,6 @@ ov.addEventListener('click',function(e){if(e.target===ov)closeK();});
   'use strict';
   if(window.__BHEQ)return;
   window.__BHEQ=true;
-  var TICKER_DATA=null;
   var ITUNES='https://itunes.apple.com/search?entity=musicTrack&limit=12&media=music&term=';
   var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function bhTrunc(s,n){s=String(s==null?'':s).trim();return s.length>n?s.slice(0,n-1).trimEnd()+'\u2026':s;}
@@ -348,7 +348,6 @@ ov.addEventListener('click',function(e){if(e.target===ov)closeK();});
     }
     /* slug -> display name from the inline ticker payload (production: ticker.php) */
     try{
-      /* the main IIFE stores the payload on window for this reader */
       var j=window.__BHTICKER||{};
       var djs=j.djs||{};
       Object.keys(djs).forEach(function(k){var dj=djs[k];if(dj&&dj.url){nameBySlug[String(dj.url).split('/').pop()]=dj.name;}});
