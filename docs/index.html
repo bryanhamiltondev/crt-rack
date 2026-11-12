@@ -20,12 +20,12 @@ code{background:#1d2027;border:1px solid #2b2f39;border-radius:4px;padding:2px 7
 <main>
 <p class="kicker">crt-rack \u00b7 live demo</p>
 <h1>Your site, but it's rack gear.</h1>
-<p>Everything on this page is the rack. Bottom rail: VFD clock, the DJ Calendar top-5 ticker (same five, same format as production), scroll position in dB, real LCP/CLS from your browser. Press <code>\u2318K</code> / <code>Ctrl+K</code> for the command palette. Hit the \u23FB power button bottom-left for the full CRT shutdown-and-reboot - with sound.</p>
-<section><h2>The ticker</h2><p>Production serves it live from a 40-line PHP proxy with a 30-minute cache. GitHub Pages can't run PHP, so the demo ships the identical five items inline - <code>#1 DAVID GUETTA</code> through <code>#5 ARMIN VAN BUUREN</code>, trailing-space spacing and all. Swap one fetch for the real thing when you deploy it.</p></section>
-<section><h2>Scroll me</h2><p>The dB readout tracks your position. Real PerformanceObserver numbers in the HUD - not fake ones.</p></section>
-<section><h2>Zero dependencies</h2><p>One CSS file, one JS file, ~13KB combined. No framework, no build step, no analytics.</p></section>
-<section><h2>Graceful everywhere</h2><p>Reduced motion? The CRT animation steps aside. Mobile? The HUD hides, the rail stays. Audio arms on your first click - the way browsers - and good manners - demand.</p></section>
-<p class="foot">Try the palette eggs: <code>ls</code>, <code>whoami</code>, <code>degauss</code>, <code>rm -rf /</code></p>
+<p>The exact rack from <a href="https://bryanhamilton.info" style="color:#00d2ff">bryanhamilton.info</a>, running on GitHub Pages. Bottom rail: \u23FB power cycle, EST VFD clock, the DJ Calendar ticker, scroll position in dB, real LCP/CLS. Press <code>\u2318K</code> / <code>Ctrl+K</code> for the palette.</p>
+<section><h2>Hover the ticker</h2><p>Hover a DJ name: the dock opens with their photo and next show, and a 30-second iTunes preview starts playing through the 8-bar analyser EQ. Move away and it stops. This is the same <code>bh-eq.js</code> player that runs in production \u2014 live iTunes lookups, Web Audio API, no audio files.</p></section>
+<section><h2>The ticker</h2><p>Production feeds the rail from a PHP endpoint with the live top-10 leaderboard. GitHub Pages can't run PHP, so the demo ships that exact payload inline \u2014 same names, photos, dates, and format. One fetch swap when self-hosted.</p></section>
+<section><h2>Scroll me</h2><p>The dB readout tracks your position. Real PerformanceObserver numbers in the HUD \u2014 not fake ones.</p></section>
+<section><h2>Zero dependencies</h2><p>One CSS file, one JS file. No framework, no build step, no analytics. Reduced motion? The EQ canvas steps aside.</p></section>
+<p class="foot">Palette eggs: <code>ls</code>, <code>whoami</code>, <code>rm -rf /</code> \u00b7 and the console knows the old code.</p>
 </main>
 <script src="rack.js"></script>
 </body>
