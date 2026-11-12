@@ -1,4 +1,4 @@
-/* crt-rack demo v2 - audio engine + live deploy-log ticker */
+/* crt-rack demo v3 - production ticker format */
 (function(){
 if(window.__BHRACK)return;window.__BHRACK=1;
 var d=document;
@@ -39,27 +39,17 @@ try{
  },800);});
 }catch(e){hud.textContent='LCP n/a';}
 
-/* ---- live ticker: deploy-log LOG.md straight from raw.githubusercontent (CORS open),
-   falls back to /ticker.php for production installs, then to the static line ---- */
-function runTick(items){tickIn.textContent=items.join('    \u00b7    ');tickIn.classList.add('run');}
-fetch('https://raw.githubusercontent.com/bryanhamiltondev/deploy-log/main/LOG.md',{cache:'no-store'})
- .then(function(r){if(!r.ok)throw 0;return r.text();})
- .then(function(t){
-  var items=['DEPLOY LOG \u00b7 LIVE FROM GITHUB'];
-  var blocks=t.split(/^## /m);blocks.shift();
-  blocks.slice(0,6).forEach(function(b){
-   var head=(b.split('\n')[0]||'').trim().replace(/\s*\((bryanhamilton\.info|thedjcalendar\.com)\)/,'');
-   var m=b.match(/- Change: ([^\n]+)/);
-   if(head&&m){var ch=m[1].trim();if(ch.length>110)ch=ch.slice(0,110)+'\u2026';items.push(head+' \u2192 '+ch);}
-  });
-  if(items.length<2)throw 0;
-  runTick(items);
- })
- .catch(function(){
-  fetch('/ticker.php',{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
-   runTick(j.items);
-  }).catch(function(){runTick(['LIVE LEADERBOARD \u2192 thedjcalendar.com/miles']);});
- });
+/* ---- ticker: same as production (bhtick5 + ticksp1) ----
+   label + DJ Mag top 5 from thedjcalendar.com/djs.json, trailing nbsp per item.
+   In production this slot is fed live by /ticker.php (40-line PHP proxy, 30-min cache);
+   the static Pages demo ships the same five items inline. */
+tickIn.textContent='The DJ Calendar top 5 DJ\u2019s worldwide'
+ +'\u00a0\u00a0\u00b7\u00a0\u00a0 #1 DAVID GUETTA\u00a0'
+ +'\u00a0\u00a0\u00b7\u00a0\u00a0 #2 MARTIN GARRIX\u00a0'
+ +'\u00a0\u00a0\u00b7\u00a0\u00a0 #3 ALOK\u00a0'
+ +'\u00a0\u00a0\u00b7\u00a0\u00a0 #4 DIMITRI VEGAS AND LIKE MIKE\u00a0'
+ +'\u00a0\u00a0\u00b7\u00a0\u00a0 #5 ARMIN VAN BUUREN\u00a0';
+tickIn.classList.add('run');
 
 /* ---- audio engine: fully synthesized CRT, zero asset files ----
    60Hz mains hum + 120Hz harmonic + faint 7.9kHz flyback whine, power sweep, degauss thunk.
@@ -122,8 +112,8 @@ pwr.addEventListener('click',function(){
 /* ---- Cmd+K palette (demo index) ---- */
 var PAGES=[
  ['GitHub repo','https://github.com/bryanhamiltondev/crt-rack'],
- ['bryanhamilton.info (production)','https://bryanhamilton.info'],
- ['Live miles board','https://thedjcalendar.com/miles']
+ ['The DJ Calendar (ticker source)','https://thedjcalendar.com/miles'],
+ ['bryanhamilton.info (production rack)','https://bryanhamilton.info']
 ];
 var EGGS={
  'whoami':function(){toast('bryanhamiltondev \u00b7 zero dependencies');},

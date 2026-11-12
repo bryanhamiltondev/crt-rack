@@ -20,11 +20,11 @@ code{background:#1d2027;border:1px solid #2b2f39;border-radius:4px;padding:2px 7
 <main>
 <p class="kicker">crt-rack \u00b7 live demo</p>
 <h1>Your site, but it's rack gear.</h1>
-<p>Everything on this page is the rack. Bottom rail: VFD clock, live ticker fed straight from my deploy log on GitHub, scroll position in dB, real LCP/CLS from your browser. Press <code>\u2318K</code> / <code>Ctrl+K</code> for the command palette. Hit the \u23FB power button bottom-left for the full CRT shutdown-and-reboot - with sound.</p>
-<section><h2>Turn your sound on</h2><p>The \uD83D\uDD0A toggle in the rail arms the audio: a synthesized 60Hz mains hum with a faint flyback whine, a power-down sweep with a thunk, and a <code>degauss</code> easter egg that wobbles the tube. Every sound is generated with the Web Audio API at runtime - zero audio files shipped.</p></section>
+<p>Everything on this page is the rack. Bottom rail: VFD clock, the DJ Calendar top-5 ticker (same five, same format as production), scroll position in dB, real LCP/CLS from your browser. Press <code>\u2318K</code> / <code>Ctrl+K</code> for the command palette. Hit the \u23FB power button bottom-left for the full CRT shutdown-and-reboot - with sound.</p>
+<section><h2>The ticker</h2><p>Production serves it live from a 40-line PHP proxy with a 30-minute cache. GitHub Pages can't run PHP, so the demo ships the identical five items inline - <code>#1 DAVID GUETTA</code> through <code>#5 ARMIN VAN BUUREN</code>, trailing-space spacing and all. Swap one fetch for the real thing when you deploy it.</p></section>
 <section><h2>Scroll me</h2><p>The dB readout tracks your position. Real PerformanceObserver numbers in the HUD - not fake ones.</p></section>
-<section><h2>Zero dependencies</h2><p>One CSS file, one JS file, ~13KB combined. No framework, no build step, no analytics. The demo ticker reads my live deploy log from raw.githubusercontent; in production the same slot is fed by a 40-line PHP proxy with a 30-minute cache.</p></section>
-<section><h2>Graceful everywhere</h2><p>No GitHub? No PHP? The ticker falls back to a static line. Reduced motion? The CRT animation steps aside. Audio defaults to armed but silent until your first click - the way browsers - and good manners - demand.</p></section>
+<section><h2>Zero dependencies</h2><p>One CSS file, one JS file, ~13KB combined. No framework, no build step, no analytics.</p></section>
+<section><h2>Graceful everywhere</h2><p>Reduced motion? The CRT animation steps aside. Mobile? The HUD hides, the rail stays. Audio arms on your first click - the way browsers - and good manners - demand.</p></section>
 <p class="foot">Try the palette eggs: <code>ls</code>, <code>whoami</code>, <code>degauss</code>, <code>rm -rf /</code></p>
 </main>
 <script src="rack.js"></script>
