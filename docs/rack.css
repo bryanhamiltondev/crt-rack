@@ -3,6 +3,8 @@
 .bh-rail button{background:none;border:0;color:#8fa3b8;cursor:pointer;font:inherit;padding:0}
 .bh-pwr{color:#00d2ff;font-size:14px}
 .bh-pwr:hover{color:#fff}
+.bh-aud{color:#00d2ff;font-size:13px}
+.bh-aud:hover{color:#fff}
 .bh-vfd{color:#00d2ff;text-shadow:0 0 6px rgba(0,210,255,.55);min-width:70px}
 .bh-tick{flex:1;overflow:hidden;white-space:nowrap;opacity:.9}
 .bh-tick-in{display:inline-block;padding-left:100%}
@@ -34,3 +36,7 @@ html.bh-shut body{animation:bhCrtOff .5s cubic-bezier(.7,0,.9,.3) forwards;trans
 html.bh-boot body{animation:bhCrtOn .65s cubic-bezier(.2,.8,.3,1) forwards;transform-origin:50vw 50vh}
 @keyframes bhCrtOff{0%{transform:none;filter:none}55%{transform:scaleY(.006);filter:brightness(3)}85%{transform:scaleY(.006) scaleX(.002);filter:brightness(6)}100%{transform:scale(.0001);opacity:0}}
 @keyframes bhCrtOn{0%{transform:scale(.0001);opacity:0;filter:brightness(6)}25%{transform:scaleY(.006) scaleX(1);opacity:1;filter:brightness(3)}60%{transform:scaleY(1.02);filter:brightness(1.3)}100%{transform:none;filter:none}}
+
+/* crt-rack demo v2 - audio toggle + degauss wobble */
+body.bh-degauss{animation:bh-degauss .9s ease-in-out}
+@keyframes bh-degauss{0%,100%{transform:none;filter:none}15%{transform:skewX(1.4deg) scaleY(1.02);filter:hue-rotate(25deg) saturate(1.6)}35%{transform:skewX(-1.1deg)}55%{transform:skewX(.7deg) scaleY(.99);filter:hue-rotate(-15deg)}75%{transform:skewX(-.4deg)}}
